@@ -56,18 +56,14 @@ export function CounselorDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#43A573]/10 via-white to-[#43A573]/5">
-      <div className="container mx-auto py-12 px-4">
-        <header className="mb-12 text-center">
-          <div className="inline-flex items-center justify-center p-2 rounded-full bg-[#43A573]/10 mb-4">
-            <Sparkles className="h-6 w-6 text-[#43A573]" />
-          </div>
+      <div className="container mx-auto  px-4">
+        <header className="mb-2 py-2 text-center">
+       
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#43A573] to-[#43A573]/80 mb-4">
-            Mental Health Counselor Guidance
+          <Sparkles className="h-6 w-6 text-[#43A573]" /> Mental Health Counselor Guidance 
           </h1>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-            Get AI-powered guidance on how to best help your patients based on their concerns.
-          </p>
-          <p className="text-sm text-slate-500 mt-2">(Not recommended for direct patient use)</p>
+      
+          <p className="text-sm text-slate-500 ">(Not recommended for direct patient use)</p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
