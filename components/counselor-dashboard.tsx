@@ -58,7 +58,7 @@ export function CounselorDashboard() {
   return (
     <div className="container mx-auto py-8 px-4">
       <header className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-slate-800 mb-2">Mental Health Counselor Guidance (not for patients) </h1>
+        <h1 className="text-3xl font-bold text-slate-800 mb-2">Mental Health Counselor Guidance (not recommended to be used by patients directly) </h1>
         <p className="text-slate-600 max-w-2xl mx-auto">
           Get AI-powered guidance on how to best help your patients based on their concerns.
         </p>
