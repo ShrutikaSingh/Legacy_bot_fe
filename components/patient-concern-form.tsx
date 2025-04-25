@@ -25,22 +25,24 @@ export function PatientConcernForm({ onSubmit, isLoading }: PatientConcernFormPr
   }
 
   const examples = [
-  {
-  title: "Gender Identity and Family Rejection",
-  concern: " A 17-year-old client recently came out as non-binary and has faced rejection from their parents. They’re showing signs of depression, including low energy, tearfulness, and self-isolation. They’ve said, “I feel like I don’t exist at home,” and have expressed suicidal ideation in the past."
-  },
-    {
-      title: "Relationship Issues",
-      concern: "My client is having trouble in their marriage. They feel disconnected from their partner and are considering separation, but are worried about the impact on their children.",
-    },
     {
       title: "Career Transition",
       concern: "My client is struggling with a career change. They feel lost and uncertain about their future, and are experiencing symptoms of depression.",
+    },
+  
+    {
+      title: "Gender Identity and Family Rejection",
+      concern: "A 17-year-old client recently came out as non-binary and has faced rejection from their parents. They're showing signs of depression, including low energy, tearfulness, and self-isolation. They've said, 'I feel like I don't exist at home,' and have expressed suicidal ideation in the past.",
     },
     {
       title: "Perfectionist Pre-Med Burnout",
       concern: "My client is a high-achieving pre-med student who is on the verge of dropping out. They feel intense shame over anything less than an A and describe frequent panic attacks before exams. They also struggle to get out of bed some mornings and have started questioning whether they belong in medicine at all. Their parents are both doctors and have high expectations, which adds to the pressure. They've started experiencing physical symptoms like headaches and insomnia, but refuse to consider taking a break from school.",
     },
+    {
+      title: "Relationship Issues",
+      concern: "My client is having trouble in their marriage. They feel disconnected from their partner and are considering separation, but are worried about the impact on their children.",
+    },
+ 
     {
       title: "Veteran with Complex PTSD",
       concern: "I'm counseling a military veteran who served in multiple combat zones. They're experiencing severe PTSD symptoms including flashbacks, hypervigilance, and emotional numbness. They've turned to alcohol to cope and have had several DUI incidents. Their marriage is falling apart, and they've lost several jobs due to anger outbursts. They're resistant to medication and traditional therapy approaches, believing they should be able to 'tough it out' on their own.",

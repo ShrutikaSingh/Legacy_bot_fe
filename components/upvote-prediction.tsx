@@ -9,6 +9,25 @@ interface UpvotePredictionProps {
   patientConcern: string
 }
 
+/**
+ * Converts a decimal confidence score to a percentage by:
+ * 1. Skipping the first digit after decimal
+ * 2. Taking the next two digits
+ * @param confidence A decimal number between 0 and 1
+ * @returns A number between 0 and 99 representing the percentage
+ */
+const convertConfidenceToPercentage = (confidence: number): number => {
+  // Convert to string to easily get the digits after decimal
+  const confidenceStr = confidence.toString();
+  // Find the decimal point
+  const decimalIndex = confidenceStr.indexOf('.');
+  if (decimalIndex === -1) return 0;
+  
+  // Skip first digit after decimal, take next two digits
+  const digitsAfterDecimal = confidenceStr.slice(decimalIndex + 2, decimalIndex + 4);
+  return parseInt(digitsAfterDecimal, 10);
+};
+
 export function UpvotePrediction({ prediction, confidence = 0, isLoading, patientConcern }: UpvotePredictionProps) {
   if (isLoading) {
     return (
@@ -17,7 +36,7 @@ export function UpvotePrediction({ prediction, confidence = 0, isLoading, patien
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-[80%]" />
       </div>
-    )
+    );
   }
 
   if (!patientConcern) {
@@ -25,18 +44,18 @@ export function UpvotePrediction({ prediction, confidence = 0, isLoading, patien
       <div className="p-6 text-center text-slate-500">
         <p>Enter a patient concern to see quality prediction</p>
       </div>
-    )
+    );
   }
 
   // Convert confidence to percentage for display
-  const confidencePercent = Math.round(confidence * 100)
+  const confidencePercent = convertConfidenceToPercentage(confidence);
 
   return (
     <div className="space-y-6">
       <div>
         <h3 className="font-medium text-slate-700 mb-3">Response Quality Prediction:</h3>
         <div className="flex items-center gap-2">
-          {prediction ? (
+          {confidencePercent > 60 ? (
             <>
               <div className="bg-green-100 text-green-800 p-2 rounded-full">
                 <ThumbsUp className="h-5 w-5" />
@@ -78,51 +97,12 @@ export function UpvotePrediction({ prediction, confidence = 0, isLoading, patien
       <div>
         <h3 className="font-medium text-slate-700 mb-3">Quality Indicators:</h3>
         <ul className="space-y-2 text-slate-600">
-          {prediction ? (
-            <>
-              <li className="flex items-start gap-2">
-                <div className="bg-green-100 text-green-800 p-1 rounded-full mt-0.5">
-                  <ThumbsUp className="h-3 w-3" />
-                </div>
-                <span>Addresses the core concern directly</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="bg-green-100 text-green-800 p-1 rounded-full mt-0.5">
-                  <ThumbsUp className="h-3 w-3" />
-                </div>
-                <span>Provides actionable guidance</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="bg-green-100 text-green-800 p-1 rounded-full mt-0.5">
-                  <ThumbsUp className="h-3 w-3" />
-                </div>
-                <span>Uses evidence-based approaches</span>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="flex items-start gap-2">
-                <div className="bg-amber-100 text-amber-800 p-1 rounded-full mt-0.5">
-                  <ThumbsDown className="h-3 w-3" />
-                </div>
-                <span>May not fully address the underlying issue</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="bg-amber-100 text-amber-800 p-1 rounded-full mt-0.5">
-                  <ThumbsDown className="h-3 w-3" />
-                </div>
-                <span>Could benefit from more specific recommendations</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <div className="bg-amber-100 text-amber-800 p-1 rounded-full mt-0.5">
-                  <ThumbsDown className="h-3 w-3" />
-                </div>
-                <span>Consider alternative therapeutic approaches</span>
-              </li>
-            </>
-          )}
+          <li>• Evidence-based approach</li>
+          <li>• Appropriate level of detail</li>
+          <li>• Professional tone and language</li>
+          <li>• Consideration of patient context</li>
         </ul>
       </div>
     </div>
-  )
+  );
 }
